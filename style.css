@@ -65,6 +65,12 @@ textarea {
   color: white;
 }
 
+textarea {
+  width: 100%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  box-sizing: border-box; /* Opera/IE 8+ */
+}
+
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;

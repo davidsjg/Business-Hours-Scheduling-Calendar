@@ -29,26 +29,81 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <!-- Timeblocks go here -->
+      <div class="row">
+        <div class="col-2 9hour allButton">
+          <p>9AM</p>
+        </div>
+        <div class="col-8 9AM allButton future">
+          <!-- <input type="text" id="userInput9"/> -->
+          <textarea id = "userInput9" type="text"></textarea>
+        </div>
+        <div class="col-2 saveBtn allButton" type="button" id="btn9">
+          <p>r1c3</p>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
 
+  <!-- <input type="text" id="hourInput"> -->
+
 
 
   <script type="text/javascript">
     $(document).ready(function() {
     
-    // initial array of hours avaialable 
-    //
-    //dynamically create buttons
-    //set date and time to $(#currentDay).text
+    var input9am = document.querySelector("#userInput9");
+    var save9AM = document.querySelector("#btn9");
+    // var output9 = document.querySelector('9AM');
+    var stored9am;
+    var input9 = {
+      
+  
+    };
+
+    function render9am() {
 
 
+    }
+
+    save9AM.addEventListener("click", function(event) {
+      // event.preventDefault() prevents button from trying to send a form.
+      // event.preventDefault();
+    
+      // create user object from submission
+      input9 = {
+          Schedule9: input9am.value.trim(), 
+      };
+      console.log(input9);
+        console.log(stored9am);
+    //set input9 to local storage
+    localStorage.setItem("input9", JSON.stringify(input9));
+  
+    });
+
+    function init() {
 
 
+        // var stored9am = JSON.parse(localStorage.getItem(input9))
+        // if (stored9am != null) {
+        //   input9 = stored9am;
+        // }
+        // input9am = stored9am;
+        // console.log(input9am);
+    }
+    var stored9am = JSON.parse(localStorage.getItem("input9"));
+    console.log(typeof stored9am);
+
+
+    input9am.textContent = stored9am.Schedule9;
+    console.log(stored9am.Schedule9);
+    init()
     })
+
+    //need an update function.  program loads from local storage.  then need to be able to click inside text area to change text.  onClick for textarea?
+
+
   </script>
 </html>
