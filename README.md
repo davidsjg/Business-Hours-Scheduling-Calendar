@@ -23,3 +23,6 @@ Body
 Script
 
 Additional Notes: The final author of this is Joey davidson. He can be reached at j.davidson18@gmail.com
+
+WEBSITE:
+https://davidsjg.github.io/Business-Hours-Scheduling-Calendar/
