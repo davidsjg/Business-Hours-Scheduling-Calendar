@@ -29,14 +29,16 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <div class="row">
+      <div class="row" id="9">
         <div class="col-2 9hour allButton">
           <p>9AM</p>
         </div>
-        <div class="col-8 9AM allButton future">
+
+        <!-- want textarea and button on same parent  -->
+        <!-- <div class="col-8 9AM allButton future" data-value9="9"> -->
           <!-- <input type="text" id="userInput9"/> -->
-          <textarea id = "userInput9" type="text"></textarea>
-        </div>
+        <textarea class="col-8 description" id = "userInput9" type="text"></textarea>
+        <!-- </div> -->
         <div class="col-2 saveBtn allButton" type="button" id="btn9">
           <p>r1c3</p>
         </div>
@@ -56,8 +58,10 @@
     
     var input9am = document.querySelector("#userInput9");
     var save9AM = document.querySelector("#btn9");
+    var dataVal = document.querySelector("#data-value9")
     // var output9 = document.querySelector('9AM');
     var stored9am;
+    var middleCol = document.querySelector(".allButton")
     var input9 = {
       
   
@@ -68,41 +72,42 @@
 
     }
 
-    save9AM.addEventListener("click", function(event) {
+    $(".saveBtn").on("click", function() {
+    // save9AM.addEventListener("click", function(event) {
       // event.preventDefault() prevents button from trying to send a form.
       // event.preventDefault();
-    
-      // create user object from submission
-      input9 = {
-          Schedule9: input9am.value.trim(), 
-      };
-      console.log(input9);
-        console.log(stored9am);
+      var inputValue = $(this).siblings(".description").val()
+      var parentID = $(this).parent().attr("id")
+      
+
     //set input9 to local storage
-    localStorage.setItem("input9", JSON.stringify(input9));
+    localStorage.setItem(parentID, inputValue);
+
   
     });
 
-    function init() {
+    $("#9 .description").val(localStorage.getItem("9"))
+
+    function backgroundUpdate() {
+      var currentTime = moment().hours()
+      console.log(currentTime)
+
+      $(".row").each(function (){
+        var blockID = $(this).attr("id") 
+        if (blockID < currentTime) {
+          $(this).addClass("past")
+        } else if (blockID > currentTime) {
+          $(this).addClass("future")
+        } else {
+          $(this).addClass("present")
+        }
 
 
-        // var stored9am = JSON.parse(localStorage.getItem(input9))
-        // if (stored9am != null) {
-        //   input9 = stored9am;
-        // }
-        // input9am = stored9am;
-        // console.log(input9am);
+      })
+
     }
-    var stored9am = JSON.parse(localStorage.getItem("input9"));
-    console.log(typeof stored9am);
-
-
-    input9am.textContent = stored9am.Schedule9;
-    console.log(stored9am.Schedule9);
-    init()
+    backgroundUpdate()
     })
-
-    //need an update function.  program loads from local storage.  then need to be able to click inside text area to change text.  onClick for textarea?
 
 
   </script>
