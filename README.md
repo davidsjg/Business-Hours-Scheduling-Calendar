@@ -26,3 +26,8 @@ Additional Notes: The final author of this is Joey davidson. He can be reached a
 
 WEBSITE:
 https://davidsjg.github.io/Business-Hours-Scheduling-Calendar/
+
+![](Screenshot1.png)
+
+![](Screenshot2.png)
+
